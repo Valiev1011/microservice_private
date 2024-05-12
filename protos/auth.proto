@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package auth;
+
+service AuthService { 
+    rpc signup(SignUpDto) returns(Tokens){};
+    rpc login(LoginDto) returns(Tokens){};
+    rpc logout(LogOutDto) returns(LogOutMessage){};
+    rpc getMe(GetMeDto) returns(User){};
+    rpc setUserCourse(SetCourseDto) returns(Course){};
+    rpc getUserCourses(GetUserCourseDto) returns(Courses){};
+    rpc deleteUserCourse(DeleteUserCourseDto) returns(Course){};
+}
+message DeleteUserCourseDto{
+    string accessToken = 1;
+    int32 courseId = 2;
+}
+message GetUserCourseDto{
+    string accessToken = 1;
+}
+message Courses{
+    repeated Course courses = 1;
+}
+message Course{
+    int32 id = 1;
+    string title = 2;
+    string description = 3;
+}
+message SetCourseDto{
+   string accessToken = 1;
+    int32 courseId = 2;
+}
+message SignUpDto{
+    string login = 1;
+    string password = 2;
+}
+message Tokens{
+    string accessToken = 1;
+    string refreshToken = 2;
+}
+message LoginDto{
+    string login = 1;
+    string password = 2;
+}
+message LogOutDto{
+    string accessToken = 1;
+}
+message GetMeDto{
+    string accessToken = 1;
+}
+message LogOutMessage{
+    string message = 1;
+}
+message User {
+    int32 id = 1;
+    string login = 2;
+}
