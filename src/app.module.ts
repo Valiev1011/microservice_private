@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { dataSourseOptions } from './database/data.source';
 import { RedisModule } from './redis/redis.module';
 import { JwtModule } from '@nestjs/jwt';
+import { FileModule } from './file/file.module';
 console.log(dataSourseOptions);
 @Module({
   imports: [
@@ -17,6 +18,7 @@ console.log(dataSourseOptions);
     AuthModule,
     CourseModule,
     RedisModule,
+    FileModule,
   ],
   controllers: [],
   providers: [],
